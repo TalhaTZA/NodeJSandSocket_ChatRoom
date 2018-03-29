@@ -22,8 +22,27 @@
             <button class="btn btn-success" id="send">SEND</button>
         </div>
 
+        <div id="messages">
+
+        </div>
 
     </div>
 </body>
+
+<script>
+    $(()=>{
+        
+        $('#send').click(()=>{
+            addMessage({name:'Talha',
+            message:'Hello'
+            });
+        });
+
+    });
+
+    function addMessage(message){
+        $('#messages').append(`<h4>${message.name}</h4> <p>${message.message}</p>`);
+    }
+</script>
 
 </html>
