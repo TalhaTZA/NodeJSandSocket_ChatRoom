@@ -20,6 +20,7 @@ app.get('/messages',(req,res,next)=>{
 
 app.post('/messages',(req,res,next)=>{
     messages.push(req.body);
+    io.emit('message',req.body);
     res.sendStatus(200);
 });
 
