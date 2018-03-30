@@ -18,14 +18,25 @@ var messages=[{
 
 const dbUrl=`mongodb://${config.user}:${config.password}@ds227939.mlab.com:27939/messages`;
 
+const Messages=mongoose.model('Messages',{
+    name: String,
+    message:String
+});
+
 app.get('/messages',(req,res,next)=>{
     res.send(messages);
 });
 
 app.post('/messages',(req,res,next)=>{
-    messages.push(req.body);
-    io.emit('message',req.body);
-    res.sendStatus(200);
+    let message=new Messages(req.body);
+    message.save((err)=>{
+        if(err){
+            res.sendStatus(500);
+        }
+        messages.push(req.body);
+        io.emit('message',req.body);
+        res.sendStatus(200);
+    });
 });
 
 io.on('connection',(socket)=>{
