@@ -55,14 +55,14 @@
     }
 
     function getMessages(){
-        $.get('http://localhost:3000/messages',(data)=>{
+        $.get('https://glacial-chamber-11608.herokuapp.com/messages',(data)=>{
             data.map(messages=>{addMessage(messages)});
         });
     }
 
     function postMessage(message){
         socket.emit('mess',message);
-        $.post('http://localhost:3000/messages',message);
+        $.post('https://glacial-chamber-11608.herokuapp.com/messages',message);
     }
 
 </script>
