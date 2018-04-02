@@ -43,6 +43,6 @@ mongoose.connect(dbUrl,(err)=>{
     console.log('Connection Successful')
 });
 
-const server=http.listen(3000,()=>{
+const server=http.listen(process.env.PORT ||3000,()=>{
     console.log('Listening on port '+server.address().port);
 });
