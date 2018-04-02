@@ -18,6 +18,10 @@ const Messages=mongoose.model('Messages',{
     message:String
 });
 
+app.get('/',(req,res,next)=>{
+    res.sendStatus(200);
+});
+
 app.get('/messages',(req,res,next)=>{
     Messages.find({},(err,messages)=>{
         res.send(messages);
