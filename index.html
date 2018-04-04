@@ -39,9 +39,9 @@
     $(()=>{
         
         $('#send').click(()=>{
-            postMessage({name: $('#name').val() , message: $('#message').val()});
-            $('name').val("");
-            $('message').val("");
+            //postMessage({name: $('#name').val() , message: $('#message').val()});
+            $('#name').val("");
+            $('#message').val("");
         });
 
         getMessages();
